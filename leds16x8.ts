@@ -10,29 +10,29 @@
 //% weight=100 color=#0fbc11 icon=""
 namespace leds16x8 {
 
-    let mon_image : Image = null
     let IIC_SDA = DigitalPin.P20
     let IIC_SCL = DigitalPin.P19
     
     /**
      * Initialise la carte leds
      */
-    //% block
+    //% block="init Leds16x18"
     export function init_leds() {
-        mon_image = images.createBigImage(`
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
-            `)
+        // mon_image = images.createBigImage(`
+        //     . . . . . . . . . . . . . . . .
+        //     . . . . . . . . . . . . . . . .
+        //     . . . . . . . . . . . . . . . .
+        //     . . . . . . . . . . . . . . . .
+        //     . . . . . . . . . . . . . . . .
+        //     . . . . . . . . . . . . . . . .
+        //     . . . . . . . . . . . . . . . .
+        //     . . . . . . . . . . . . . . . .
+        //     `);
     }
 
-    export function obtenir_pixel(x: number, y : number) : boolean {
-        return mon_image.get(x, y) != 0;
+    //% block="dans $img definir pixel en $x, $y à $value"
+    export function definir_pixel(img : Image, x: number, y : number, value: boolean)  {
+        img.setPixel(x, y, value);
     }
 
     // Fonction : Démarrer la communication I²C
@@ -85,8 +85,8 @@ namespace leds16x8 {
     /**
      * Initialise une image vide
      */
-    //% block
-    export function creer_grande_image() : Image {
+    //% block="Créer une image vide"
+    export function creer_image_vide() : Image {
         return images.createBigImage(`
             . . . . . . . . . . . . . . . .
             . . . . . . . . . . . . . . . .
