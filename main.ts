@@ -1,6 +1,13 @@
 input.onButtonPressed(Button.A, function () {
-	
+    truc = images.createImage(`
+        . . . . .
+        . . # # .
+        . . # . .
+        . . . . .
+        . . . . .
+        `)
 })
+let truc: Image = null
 leds16x8.init_leds()
 let img = leds16x8.creer_image_vide()
 leds16x8.definir_pixel(
