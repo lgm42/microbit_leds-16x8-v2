@@ -9,4 +9,10 @@ img,
 1,
 true
 )
+leds16x8.definir_pixel(
+img,
+2,
+2,
+true
+)
 leds16x8.montrer_grande_image(img)

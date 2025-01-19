@@ -67,6 +67,11 @@ namespace leds16x8 {
 
     // Fonction : Envoyer un octet via I²C
     function IIC_send(sendData: number) {
+        // pins.digitalWritePin(IIC_SCL, 0)
+        // pins.digitalWritePin(IIC_SDA, 0)
+        // control.waitMicros(3)
+        // pins.digitalWritePin(IIC_SCL, 1)
+        // control.waitMicros(3)
         for (let index = 0; index < 8; index++) {
             pins.digitalWritePin(IIC_SCL, 0)
             control.waitMicros(3)
