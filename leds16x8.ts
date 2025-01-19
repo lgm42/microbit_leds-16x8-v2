@@ -9,6 +9,50 @@
  */
 //% weight=100 color=#0fbc11 icon=""
 namespace leds16x8 {
+
+    let mon_image : Image = null
+    let IIC_SDA = DigitalPin.P20
+    let IIC_SCL = DigitalPin.P19
+    
+    /**
+     * Initialise la carte leds
+     */
+    //% block
+    export function init_leds() {
+        mon_image = images.createBigImage(`
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            `)
+    }
+
+    export function obtenir_pixel(x: number, y : number) : boolean {
+        return mon_image.get(x, y) != 0;
+    }
+
+    // Fonction : Démarrer la communication I²C
+    function IIC_start() {
+        pins.digitalWritePin(IIC_SDA, 1)
+        pins.digitalWritePin(IIC_SCL, 1)
+        control.waitMicros(3)
+        pins.digitalWritePin(IIC_SDA, 0)
+        control.waitMicros(3)
+        pins.digitalWritePin(IIC_SCL, 0)
+        control.waitMicros(3)
+    }
+
+    // Compteur pour changer la ligne
+    // Fonction : Initialiser l'état des broches
+    function initPins() {
+        pins.digitalWritePin(IIC_SCL, 1)
+        pins.digitalWritePin(IIC_SDA, 1)
+    }
+
     // Fonction : Terminer la communication I²C
     function IIC_end() {
         pins.digitalWritePin(IIC_SCL, 0)
@@ -20,6 +64,7 @@ namespace leds16x8 {
         pins.digitalWritePin(IIC_SDA, 1)
         control.waitMicros(3)
     }
+
     // Fonction : Envoyer un octet via I²C
     function IIC_send(sendData: number) {
         for (let index = 0; index < 8; index++) {
@@ -38,6 +83,23 @@ namespace leds16x8 {
     }
 
     /**
+     * Initialise une image vide
+     */
+    //% block
+    export function creer_grande_image() : Image {
+        return images.createBigImage(`
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            `)
+    }
+
+    /**
      * Show the picture
      * @param image Image to show
      */
@@ -51,6 +113,7 @@ namespace leds16x8 {
             return
         }
         for (let x = 0; x <= image.width() - 1; x++) {
+            let column = 0;
             for (let y = 0; y <= image.height() - 1; y++) {
                 if (image.pixel(x, y)) {
                     column += 1
