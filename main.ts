@@ -1,4 +1,7 @@
 /**
+ * Creates an image for 16x8 display.
+ */
+/**
  * Ligne actuelle des données
  */
 // we create the buffer to send
@@ -58,6 +61,15 @@ input.onButtonPressed(Button.A, function () {
     serial.writeValue("width", img.width())
     serial.writeValue("height", img.height())
 })
+input.onButtonPressed(Button.B, function () {
+    toto = images.createBigImage(`
+        # . . . . . . . # .
+        . # . . . . . # . .
+        . . # . . . # . . .
+        . . . # . # . . . .
+        . . . . # . . . . .
+        `)
+})
 // Fonction : Terminer la communication I²C
 function IIC_end () {
     pins.digitalWritePin(IIC_SCL, 0)
@@ -87,20 +99,24 @@ control.waitMicros(3)
 }
 let dataLine = 0
 let delayCount = 0
+let toto: Image = null
 let IIC_SCL = 0
 let IIC_SDA = 0
 let column = 0
-let img : Image;
 IIC_SDA = DigitalPin.P20
 IIC_SCL = DigitalPin.P19
+let img : Image;
 // Initialiser les broches au démarrage
 initPins()
 img = images.createBigImage(`
-    # . . . . . . . . .
-    # # # . . . . . . .
-    # . . . . . . . . .
-    # . . . . . . . . .
-    # . . . . . . . . .
+    # . . . # # # # . #. . . . . .
+    # # # . # # # # . #. . . . . .
+    # . . . # # # # . #. . . . . .
+    # . . . # # # # . #. . . . . .
+    # . . . # # # # . #. . . . . .
+    # . . . # # # # . #. . . . . .
+    # # # . # # # # . #. . . . . .
+    # . . . # # # # . #. . . . . .
     `)
 // Programme principal
 basic.forever(function () {
