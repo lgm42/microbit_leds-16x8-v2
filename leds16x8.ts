@@ -141,5 +141,29 @@ namespace leds16x8 {
         const im = <Image><any>i; return im
     }
 
+    /**
+    * Cloner une image 16x8
+    */
+    //% block="clone d'image 16x8 $img"
+    export function cloneImage(img: Image): Image {
+        let copie = images.createBigImage(`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `);
+
+        for (let x = 0; x < img.width(); x++) {
+            for (let y = 0; y < img.height(); y++) {
+                copie.setPixel(x, y, img.pixel(x, y));
+            }
+        }
+
+        return copie;
+    }
 
 }
