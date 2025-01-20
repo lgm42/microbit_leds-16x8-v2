@@ -7,30 +7,13 @@
 /**
  * Custom blocks
  */
-//% weight=100 color=#0fbc11 icon=""
+//% weight=50 color=#0fbc11 icon="▦"
 namespace leds16x8 {
 
     let IIC_SDA = DigitalPin.P20
     let IIC_SCL = DigitalPin.P19
-    
-    /**
-     * Initialise la carte leds
-     */
-    //% block="init Leds16x18"
-    export function init_leds() {
-        // mon_image = images.createBigImage(`
-        //     . . . . . . . . . . . . . . . .
-        //     . . . . . . . . . . . . . . . .
-        //     . . . . . . . . . . . . . . . .
-        //     . . . . . . . . . . . . . . . .
-        //     . . . . . . . . . . . . . . . .
-        //     . . . . . . . . . . . . . . . .
-        //     . . . . . . . . . . . . . . . .
-        //     . . . . . . . . . . . . . . . .
-        //     `);
-    }
 
-    //% block="dans $img definir pixel en $x, $y à $value"
+    //% block="dans $img definir pixel en $x, $y à $value"  inlineInputMode="inline"
     export function definir_pixel(img : Image, x: number, y : number, value: boolean)  {
         img.setPixel(x, y, value);
     }
@@ -90,7 +73,7 @@ namespace leds16x8 {
     /**
      * Initialise une image vide
      */
-    //% block="Créer une image vide"
+    //% block="Créer une image 16x8 vide"
     export function creer_image_vide() : Image {
         return images.createBigImage(`
             . . . . . . . . . . . . . . . .
@@ -108,8 +91,8 @@ namespace leds16x8 {
      * Show the picture
      * @param image Image to show
      */
-    //% block
-    export function montrer_grande_image(image: Image) {
+    //% block="Montrer image 16x8 $image"
+    export function montrer_image(image: Image) {
         let rawBuffer: number[] = []
         if (image.width() != 16) {
             return
@@ -120,10 +103,11 @@ namespace leds16x8 {
         for (let x = 0; x <= image.width() - 1; x++) {
             let column = 0;
             for (let y = 0; y <= image.height() - 1; y++) {
-                if (image.pixel(x, y)) {
-                    column += 1
+                column <<= 1; // Décale vers la gauche pour faire de la place pour le nouveau bit
+                let yInverted = 7 - y;
+                if (image.pixel(x, yInverted)) {
+                    column |= 1;
                 }
-                column <<= 1;
             }
             rawBuffer.push(column)
         }
@@ -135,8 +119,8 @@ namespace leds16x8 {
         IIC_start()
         // Adresse mémoire de départ (0x00)
         IIC_send(192)
-        for (let j = 0; j <= 15; j++) {
-            IIC_send(rawBuffer[j])
+        for (let j = 0; j < rawBuffer.length; j++) {
+            IIC_send(rawBuffer[j]);
         }
         IIC_end()
         // *********** Régler la luminosité ***************
@@ -145,5 +129,17 @@ namespace leds16x8 {
         IIC_send(138)
         IIC_end()
     }
+
+    /**
+     * Créer une image personnalisée 16x8
+     */
+    //% block="créer image 16x8"
+    //% imageLiteral=1 imageLiteralColumns=16 imageLiteralRows=8
+    //% imageEditorScale=2   // double the on-screen density for this large image
+    //% shim=images::createImage
+    export function creer_image(i: string): Image {
+        const im = <Image><any>i; return im
+    }
+
 
 }
