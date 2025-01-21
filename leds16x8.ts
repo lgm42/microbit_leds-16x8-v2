@@ -1,10 +1,5 @@
 
 /**
-* Utilisez ce fichier pour définir des fonctions et des blocs personnalisés.
-* En savoir plus à https://makecode.microbit.org/blocks/custom
-*/
-
-/**
  * Custom blocks
  */
 //% weight=50 color=#0fbc11 icon="▦"
@@ -68,8 +63,9 @@ namespace leds16x8 {
     /**
      * Initialise une image vide
      */
-    //% block="Créer une image 16x8 vide"
-    export function creer_image_vide() : Image {
+    //% block="Create empty 16x8 image"
+    //% weight=60
+    export function create_empty_image(): Image {
         return images.createBigImage(`
             . . . . . . . . . . . . . . . .
             . . . . . . . . . . . . . . . .
@@ -83,11 +79,24 @@ namespace leds16x8 {
     }
 
     /**
+     * Créer une image personnalisée 16x8
+     */
+    //% block="Create 16x8 image"
+    //% imageLiteral=1 imageLiteralColumns=16 imageLiteralRows=8
+    //% imageEditorScale=2   // double the on-screen density for this large image
+    //% shim=images::createImage
+    //% weight=50
+    export function create_image(i: string): Image {
+        const im = <Image><any>i; return im
+    }
+
+    /**
      * Show the picture
      * @param image Image to show
      */
-    //% block="Montrer image 16x8 $image"
-    export function montrer_image(image: Image) {
+    //% block="Show 16x8 image $image"
+    //% weight=40
+    export function show_image(image: Image) {
         let rawBuffer: number[] = []
         if (image.width() != 16) {
             return
@@ -126,20 +135,10 @@ namespace leds16x8 {
     }
 
     /**
-     * Créer une image personnalisée 16x8
-     */
-    //% block="créer image 16x8"
-    //% imageLiteral=1 imageLiteralColumns=16 imageLiteralRows=8
-    //% imageEditorScale=2   // double the on-screen density for this large image
-    //% shim=images::createImage
-    export function creer_image(i: string): Image {
-        const im = <Image><any>i; return im
-    }
-
-    /**
     * Cloner une image 16x8
     */
-    //% block="clone d'image 16x8 $img"
+    //% block="Clone 16x8 image $img"
+    //% weight=30
     export function cloneImage(img: Image): Image {
         let copie = images.createBigImage(`
         . . . . . . . . . . . . . . . .
@@ -161,13 +160,15 @@ namespace leds16x8 {
         return copie;
     }
 
-    //% block="dans $img definir pixel en $x, $y à $value"  inlineInputMode="inline"
-    export function definir_pixel(img: Image, x: number, y: number, value: boolean) {
+    //% block="In $img set pixel at $x, $y to $value"  inlineInputMode="inline"
+    //% weight=20
+    export function set_pixel(img: Image, x: number, y: number, value: boolean) {
         img.setPixel(x, y, value);
     }
 
-    //% block="Dans $img pixel en $x, $y allumé"  inlineInputMode="inline"
-    export function pixel_allume(img: Image, x: number, y: number) : boolean {
+    //% block="In $img pixel at $x, $y on"  inlineInputMode="inline"
+    //% weight=10
+    export function is_pixel_set(img: Image, x: number, y: number): boolean {
         return img.pixel(x, y);
     }
 }
