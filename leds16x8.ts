@@ -13,11 +13,6 @@ namespace leds16x8 {
     let IIC_SDA = DigitalPin.P20
     let IIC_SCL = DigitalPin.P19
 
-    //% block="dans $img definir pixel en $x, $y à $value"  inlineInputMode="inline"
-    export function definir_pixel(img : Image, x: number, y : number, value: boolean)  {
-        img.setPixel(x, y, value);
-    }
-
     // Fonction : Démarrer la communication I²C
     function IIC_start() {
         pins.digitalWritePin(IIC_SDA, 1)
@@ -166,4 +161,13 @@ namespace leds16x8 {
         return copie;
     }
 
+    //% block="dans $img definir pixel en $x, $y à $value"  inlineInputMode="inline"
+    export function definir_pixel(img: Image, x: number, y: number, value: boolean) {
+        img.setPixel(x, y, value);
+    }
+
+    //% block="Dans $img pixel en $x, $y allumé"  inlineInputMode="inline"
+    export function pixel_allume(img: Image, x: number, y: number) : boolean {
+        return img.pixel(x, y);
+    }
 }
