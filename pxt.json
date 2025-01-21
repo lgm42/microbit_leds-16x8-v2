@@ -1,5 +1,5 @@
 {
-    "name": "leds 16x8 v2",
+    "name": "leds16x8",
     "description": "",
     "dependencies": {
         "core": "*",
