@@ -7,10 +7,8 @@
         "microphone": "*"
     },
     "files": [
-        "main.blocks",
         "main.ts",
         "README.md",
-        "leds16x8.ts",
         "_locales/fr/pxt-leds16x8-strings.json"
     ],
     "testFiles": [
