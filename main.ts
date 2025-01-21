@@ -24,17 +24,17 @@ input.onButtonPressed(Button.B, function () {
 let img2: Image = null
 let raq_x = 0
 let img = leds16x8.creer_image(`
+    # # . . . . . . . . . . . . # #
+    # . . . . . . . . . . . . . . #
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
-    . . . . . . . . . . . . . . . .
-    . . . . . . . . . . . . . . . .
-    . . . . . . . . . . . . . . . .
-    . . . . . . . . . . . . . . . .
+    # . . . . . . . . . . . . . . #
+    # . . . . . . . . . . . . . . #
     `)
 leds16x8.montrer_image(img)
-let raq_y = 6
+let raq_y = 7
 raq_x = 10
 let ennemis = [
 2,
