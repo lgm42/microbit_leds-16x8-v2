@@ -9,7 +9,7 @@
     "files": [
         "main.ts",
         "README.md",
-        "_locales/fr/pxt-leds16x8-strings.json"
+        "_locales/fr/leds16x8-strings.json"
     ],
     "testFiles": [
         "test.ts"
