@@ -42,6 +42,9 @@ let ennemis = [
 8,
 12
 ]
+if (leds16x8.pixel_allume(img, 0, 0)) {
+    raq_y = 6
+}
 basic.forever(function () {
     img2 = leds16x8.cloneImage(img)
     dessine_raquette(raq_x, raq_y, img2)
