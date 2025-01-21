@@ -10,7 +10,8 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "leds16x8.ts"
+        "leds16x8.ts",
+        "_locales/fr/i18n.json"
     ],
     "testFiles": [
         "test.ts"
