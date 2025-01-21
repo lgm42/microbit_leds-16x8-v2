@@ -11,7 +11,7 @@
         "main.ts",
         "README.md",
         "leds16x8.ts",
-        "_locales/fr/i18n.json"
+        "_locales/fr/pxt-leds16x8-strings.json"
     ],
     "testFiles": [
         "test.ts"
@@ -23,5 +23,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
