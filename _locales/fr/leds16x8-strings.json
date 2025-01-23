@@ -7,4 +7,4 @@
     "leds16x8.show16x8Image|block": "Montrer image 16x8 $image",
     "leds16x8|block": "leds 16x8",
     "{id:category}Leds16x8": "Leds 16x8"
-  }
+}
