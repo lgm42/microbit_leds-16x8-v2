@@ -10,6 +10,8 @@
     "files": [
         "main.ts",
         "README.md",
+        "_locales/leds16x8-strings.json",
+        "_locales/leds16x8-jsdoc-strings.json",
         "_locales/fr/leds16x8-strings.json"
     ],
     "testFiles": [
