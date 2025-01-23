@@ -3,6 +3,8 @@
 Welcome to the 16x8 LED Matrix project !
 This MakeCode Micro:bit extension enables easy control of a 16x8 LED matrix to draw anything you want on it.
 
+![Photo of leds 16x8 supported](assets/leds16x8.png)
+
 ## Features
 
 Create images variables or clone it to manipulate multiple buffers.
