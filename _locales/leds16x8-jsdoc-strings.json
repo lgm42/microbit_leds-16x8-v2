@@ -1,8 +1,10 @@
 {
   "leds16x8": "Custom blocks",
-  "leds16x8.cloneImage": "Cloner une image 16x8",
-  "leds16x8.create_empty_image": "Initialise une image vide",
-  "leds16x8.create_image": "Créer une image personnalisée 16x8",
-  "leds16x8.show_image": "Show the picture",
-  "leds16x8.show_image|param|image": "Image to show"
+  "leds16x8.clone16x8Image": "Clone a 16x8 image",
+  "leds16x8.create16x8EmptyImage": "Initialize an empty 16x8 image",
+  "leds16x8.create16x8Image": "Create a custom 16x8 image",
+  "leds16x8.isPixelSet": "Get a pixel in a 16x8 image",
+  "leds16x8.setPixel": "Set a pixel in a 16x8 image",
+  "leds16x8.show16x8Image": "Show the picture",
+  "leds16x8.show16x8Image|param|image": "Image to show"
 }

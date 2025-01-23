@@ -1,8 +1,10 @@
 {
-    "leds16x8.create_empty_image|block": "Créer une image 16x8 vide",
-    "leds16x8.create_image|block": "Créer une image 16x8",
-    "leds16x8.show_image|block": "Montrer image 16x8 $image",
-    "leds16x8.cloneImage|block": "Cloner l'image 16x8 $img",
-    "leds16x8.set_pixel|block": "Dans $img definir pixel en x $x, y $y à $value",
-    "leds16x8.is_pixel_set|block": "Dans $img pixel en x $x, y $y allumé"
-}
+    "leds16x8.clone16x8Image|block": "Cloner l'image 16x8 $img",
+    "leds16x8.create16x8EmptyImage|block": "Créer une image 16x8 vide",
+    "leds16x8.create16x8Image|block": "Créer une image 16x8",
+    "leds16x8.isPixelSet|block": "Dans $img pixel en x $x, y $y allumé",
+    "leds16x8.setPixel|block": "Dans $img definir pixel en x $x, y $y à $value",
+    "leds16x8.show16x8Image|block": "Montrer image 16x8 $image",
+    "leds16x8|block": "leds 16x8",
+    "{id:category}Leds16x8": "Leds 16x8"
+  }

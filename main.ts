@@ -8,8 +8,8 @@ namespace leds16x8 {
     let IIC_SDA = DigitalPin.P20
     let IIC_SCL = DigitalPin.P19
 
-    // Fonction : Démarrer la communication I²C
-    function IIC_start() {
+    // Function : Start I²C communication
+    function iicStart() {
         pins.digitalWritePin(IIC_SDA, 1)
         pins.digitalWritePin(IIC_SCL, 1)
         control.waitMicros(3)
@@ -19,15 +19,8 @@ namespace leds16x8 {
         control.waitMicros(3)
     }
 
-    // Compteur pour changer la ligne
-    // Fonction : Initialiser l'état des broches
-    function initPins() {
-        pins.digitalWritePin(IIC_SCL, 1)
-        pins.digitalWritePin(IIC_SDA, 1)
-    }
-
-    // Fonction : Terminer la communication I²C
-    function IIC_end() {
+    // Function : Finish I²C communication
+    function iicEnd() {
         pins.digitalWritePin(IIC_SCL, 0)
         control.waitMicros(3)
         pins.digitalWritePin(IIC_SDA, 0)
@@ -38,13 +31,8 @@ namespace leds16x8 {
         control.waitMicros(3)
     }
 
-    // Fonction : Envoyer un octet via I²C
-    function IIC_send(sendData: number) {
-        // pins.digitalWritePin(IIC_SCL, 0)
-        // pins.digitalWritePin(IIC_SDA, 0)
-        // control.waitMicros(3)
-        // pins.digitalWritePin(IIC_SCL, 1)
-        // control.waitMicros(3)
+    // Function :Send a byte over I²C
+    function iicSend(sendData: number) {
         for (let index = 0; index < 8; index++) {
             pins.digitalWritePin(IIC_SCL, 0)
             control.waitMicros(3)
@@ -61,11 +49,11 @@ namespace leds16x8 {
     }
 
     /**
-     * Initialise une image vide
+     * Initialize an empty 16x8 image
      */
     //% block="Create empty 16x8 image"
     //% weight=60
-    export function create_empty_image(): Image {
+    export function create16x8EmptyImage(): Image {
         return images.createBigImage(`
             . . . . . . . . . . . . . . . .
             . . . . . . . . . . . . . . . .
@@ -79,14 +67,14 @@ namespace leds16x8 {
     }
 
     /**
-     * Créer une image personnalisée 16x8
+     * Create a custom 16x8 image
      */
     //% block="Create 16x8 image"
     //% imageLiteral=1 imageLiteralColumns=16 imageLiteralRows=8
     //% imageEditorScale=2   // double the on-screen density for this large image
     //% shim=images::createImage
     //% weight=50
-    export function create_image(i: string): Image {
+    export function create16x8Image(i: string): Image {
         const im = <Image><any>i; return im
     }
 
@@ -96,7 +84,7 @@ namespace leds16x8 {
      */
     //% block="Show 16x8 image $image"
     //% weight=40
-    export function show_image(image: Image) {
+    export function show16x8Image(image: Image) {
         let rawBuffer: number[] = []
         if (image.width() != 16) {
             return
@@ -116,30 +104,30 @@ namespace leds16x8 {
             rawBuffer.push(column)
         }
         // ************ Activer l'incrémentation automatique ************
-        IIC_start()
-        IIC_send(64)
-        IIC_end()
+        iicStart()
+        iicSend(64)
+        iicEnd()
         // ********** Envoyer les données d'affichage ***************
-        IIC_start()
+        iicStart()
         // Adresse mémoire de départ (0x00)
-        IIC_send(192)
+        iicSend(192)
         for (let j = 0; j < rawBuffer.length; j++) {
-            IIC_send(rawBuffer[j]);
+            iicSend(rawBuffer[j]);
         }
-        IIC_end()
+        iicEnd()
         // *********** Régler la luminosité ***************
-        IIC_start()
+        iicStart()
         // Réglage de la luminosité
-        IIC_send(138)
-        IIC_end()
+        iicSend(138)
+        iicEnd()
     }
 
     /**
-    * Cloner une image 16x8
+    * Clone a 16x8 image 
     */
     //% block="Clone 16x8 image $img"
     //% weight=30
-    export function cloneImage(img: Image): Image {
+    export function clone16x8Image(img: Image): Image {
         let copie = images.createBigImage(`
         . . . . . . . . . . . . . . . .
         . . . . . . . . . . . . . . . .
@@ -160,15 +148,21 @@ namespace leds16x8 {
         return copie;
     }
 
+    /**
+    * Set a pixel in a 16x8 image 
+    */
     //% block="In $img set pixel at $x, $y to $value"  inlineInputMode="inline"
     //% weight=20
-    export function set_pixel(img: Image, x: number, y: number, value: boolean) {
+    export function setPixel(img: Image, x: number, y: number, value: boolean) {
         img.setPixel(x, y, value);
     }
 
+    /**
+    * Get a pixel in a 16x8 image 
+    */
     //% block="In $img pixel at $x, $y on"  inlineInputMode="inline"
     //% weight=10
-    export function is_pixel_set(img: Image, x: number, y: number): boolean {
+    export function isPixelSet(img: Image, x: number, y: number): boolean {
         return img.pixel(x, y);
     }
 }
