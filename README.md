@@ -1,6 +1,6 @@
 # LED Matrix 16x8 Controller for Micro:bit
 
-Welcome to the 16x8 LED Matrix project! 
+Welcome to the 16x8 LED Matrix project !
 This MakeCode Micro:bit extension enables easy control of a 16x8 LED matrix to draw anything you want on it.
 
 ## Features
@@ -20,7 +20,7 @@ Select the extension to add it to your project.
 ## Basic Example
 
 ```typescript
-let img = leds16x8.create_image(`
+let img = leds16x8.createImage(`
     # # # # # # # # # # # # # # # #
     # . . . . . . . . . . . . . . #
     # . . . . . . . . . . . . . . #
@@ -30,16 +30,14 @@ let img = leds16x8.create_image(`
     # . . . . . . . . . . . . . . #
     # # # # # # # # # # # # # # # #
     `)
-leds16x8.set_pixel(img, 3, 3, true)
-leds16x8.show_image(img)
+leds16x8.setPixel(img, 3, 3, true)
+leds16x8.showImage(img)
 
 ```
 
-![](assets/simple_example.png "Simple example in block mode")
+![Simple example in block mode](assets/simple_example.png)
 
 ## Extended example
-
-
 
 ## Hardware Requirements
 
