@@ -51,7 +51,7 @@ namespace leds16x8 {
     /**
      * Initialize an empty 16x8 image
      */
-    //% block="Create empty 16x8 image"
+    //% block="create empty 16x8 image"
     //% weight=60
     export function create16x8EmptyImage(): Image {
         return images.createBigImage(`
@@ -69,7 +69,7 @@ namespace leds16x8 {
     /**
      * Create a custom 16x8 image
      */
-    //% block="Create 16x8 image"
+    //% block="create 16x8 image"
     //% imageLiteral=1 imageLiteralColumns=16 imageLiteralRows=8
     //% imageEditorScale=2   // double the on-screen density for this large image
     //% shim=images::createImage
@@ -82,7 +82,7 @@ namespace leds16x8 {
      * Show the picture
      * @param image Image to show
      */
-    //% block="Show 16x8 image $image"
+    //% block="show 16x8 image $image"
     //% weight=40
     export function show16x8Image(image: Image) {
         let rawBuffer: number[] = []
@@ -125,7 +125,7 @@ namespace leds16x8 {
     /**
     * Clone a 16x8 image 
     */
-    //% block="Clone 16x8 image $img"
+    //% block="clone 16x8 image $img"
     //% weight=30
     export function clone16x8Image(img: Image): Image {
         let copie = images.createBigImage(`
@@ -151,7 +151,7 @@ namespace leds16x8 {
     /**
     * Set a pixel in a 16x8 image 
     */
-    //% block="In $img set pixel at $x, $y to $value"  inlineInputMode="inline"
+    //% block="in $img set pixel at $x, $y to $value"  inlineInputMode="inline"
     //% weight=20
     export function setPixel(img: Image, x: number, y: number, value: boolean) {
         img.setPixel(x, y, value);
@@ -160,7 +160,7 @@ namespace leds16x8 {
     /**
     * Get a pixel in a 16x8 image 
     */
-    //% block="In $img pixel at $x, $y on"  inlineInputMode="inline"
+    //% block="in $img pixel at $x, $y on"  inlineInputMode="inline"
     //% weight=10
     export function isPixelSet(img: Image, x: number, y: number): boolean {
         return img.pixel(x, y);

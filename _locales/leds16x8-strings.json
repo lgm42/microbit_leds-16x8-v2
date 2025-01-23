@@ -1,10 +1,10 @@
 {
-  "leds16x8.clone16x8Image|block": "Clone 16x8 image $img",
-  "leds16x8.create16x8EmptyImage|block": "Create empty 16x8 image",
-  "leds16x8.create16x8Image|block": "Create 16x8 image",
-  "leds16x8.isPixelSet|block": "In $img pixel at $x, $y on",
-  "leds16x8.setPixel|block": "In $img set pixel at $x, $y to $value",
-  "leds16x8.show16x8Image|block": "Show 16x8 image $image",
+  "leds16x8.clone16x8Image|block": "clone 16x8 image $img",
+  "leds16x8.create16x8EmptyImage|block": "create empty 16x8 image",
+  "leds16x8.create16x8Image|block": "create 16x8 image",
+  "leds16x8.isPixelSet|block": "in $img pixel at $x, $y on",
+  "leds16x8.setPixel|block": "in $img set pixel at $x, $y to $value",
+  "leds16x8.show16x8Image|block": "show 16x8 image $image",
   "leds16x8|block": "leds 16x8",
   "{id:category}Leds16x8": "Leds 16x8"
 }
