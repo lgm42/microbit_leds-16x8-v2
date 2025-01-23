@@ -20,7 +20,7 @@ Select the extension to add it to your project.
 ## Basic Example
 
 ```typescript
-let img = leds16x8.createImage(`
+let img = leds16x8.create16x8Image(`
     # # # # # # # # # # # # # # # #
     # . . . . . . . . . . . . . . #
     # . . . . . . . . . . . . . . #
@@ -31,7 +31,7 @@ let img = leds16x8.createImage(`
     # # # # # # # # # # # # # # # #
     `)
 leds16x8.setPixel(img, 3, 3, true)
-leds16x8.showImage(img)
+leds16x8.show16x8Image(img)
 
 ```
 
