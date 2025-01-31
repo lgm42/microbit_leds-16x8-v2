@@ -12,6 +12,12 @@ Individual LED control.
 Easy configuration via the MakeCode interface.
 Fully available in english and in French (original language)
 
+## Product link
+
+Here is a ali express link to buy product:
+
+(https://fr.aliexpress.com/item/1005004373211448.html)
+
 ## Installation
 
 Open the MakeCode for Micro:bit editor.
